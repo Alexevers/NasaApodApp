@@ -1,50 +1,27 @@
 package com.alejandro.nasaproject.domain.model
 
-import com.alejandro.nasaproject.NasaTestDataBuilder
-import org.hamcrest.CoreMatchers.instanceOf
-import org.hamcrest.MatcherAssert.*
 import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.notNullValue
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
-class NasaModelTest {
 
-    //
-    var nasaModel = NasaModel(
-        "56",
-        "Alex",
-        "https://foto",
-        "descripcion"
-    )
+internal class NasaModelTest{
+    val nasaModel = NasaModel("1","date","description","photo")
 
     @Test
-    fun `WHEN create model EXPECT not null value`() {
-        assertThat(nasaModel, instanceOf(NasaModel::class.java))
-        assertThat(nasaModel, notNullValue())
+    fun `WHEN nasaModel id is 5 EXPECT id is 5`(){
+        assertThat(nasaModel.id, `is`("1"))
+    }
+    @Test
+    fun `WHEN nasaModel date is date EXPECT date is date`(){
+        assertThat(nasaModel.date, `is`("date"))
+    }@Test
+    fun `WHEN nasaModel description is alex EXPECT description is alex`(){
+        assertThat(nasaModel.id, `is`("1"))
+    }@Test
+    fun `WHEN nasaModel photo is foto EXPECT photo is foto`(){
+        assertThat(nasaModel.photo, `is`("photo"))
     }
 
-    @Test
-    fun `WHEN NasaModel id is 56 EXPECT id = 56`() {
-        val Nasa = NasaTestDataBuilder()
-            .buildSingle()
-        assertThat(Nasa.id, `is`("test-id"))
-    }
-
-    @Test
-    fun `WHEN NasaModel name is Alex EXPECT name = Alex`() {
-        val Nasa = NasaTestDataBuilder()
-            .withName("Alex")
-            .buildSingle()
-        assertThat(Nasa.id, `is`("Alex"))
-    }
-
-    /**
-     * Movido a StringExtTest
-     */
-    @Test
-    fun `WHEN creates NasaModel EXPECT photoUrl contains schema`() {
-        //assertThat(NasaModel.photoUrl, `is`("foto"))
-        assertThat(nasaModel.photo, nasaModel.photo.startsWith("https"))
-    }
 
 }

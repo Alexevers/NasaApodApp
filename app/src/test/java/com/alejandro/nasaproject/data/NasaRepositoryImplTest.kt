@@ -10,14 +10,14 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.test.runTest
-import org.hamcrest.CoreMatchers.instanceOf
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class NasaRepositoryImplTest {
+
+internal class NasaRepositoryImplTest{
     @get:Rule
     val instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
     @get:Rule
@@ -34,9 +34,8 @@ class NasaRepositoryImplTest {
     fun setup() {
         MockKAnnotations.init(this)
     }
-
     @Test
-    fun `WHEN getNasaList EXPECT local data`() = runTest {
+    fun `WHEN getHeroList EXPECT local data`() = runTest {
         coEvery { localDataSource.getNasaList() } returns getListLocal()
         coEvery { remoteDataSource.getNasaList() } returns listOf<NasaDto>()
 
@@ -48,12 +47,11 @@ class NasaRepositoryImplTest {
         val res = repo.getNasaList()
 
 
-        assertThat(res, instanceOf(List::class.java))
-        assertThat(res.size, `is`(2))
+        MatcherAssert.assertThat(res, CoreMatchers.instanceOf(List::class.java))
+        MatcherAssert.assertThat(res.size, CoreMatchers.`is`(2))
     }
-
     @Test
-    fun `WHEN getNasaList EXPECT remote data`() = runTest {
+    fun `WHEN getHeroList EXPECT local `() = runTest {
         coEvery { localDataSource.getNasaList() } returns listOf<NasaLocal>()
         coEvery { remoteDataSource.getNasaList() } returns getListRemote()
 
@@ -64,17 +62,18 @@ class NasaRepositoryImplTest {
 
         val res = repo.getNasaList()
 
-        assertThat(res, instanceOf(List::class.java))
-        assertThat(res.size, `is`(2))
+
+        MatcherAssert.assertThat(res, CoreMatchers.instanceOf(List::class.java))
+        MatcherAssert.assertThat(res.size, CoreMatchers.`is`(2))
     }
+
 }
 
 fun getListLocal() = listOf(
-        NasaLocal("id", "name", "https://photo-url", true),
-        NasaLocal("id", "name", "https://photo-url", true)
-    )
-
-fun getListRemote() = listOf<NasaDto>(
-    NasaDto("id", "name", "url", "https://photo-url", true),
-    NasaDto("id", "name", "url", "https://photo-url", true)
+    NasaLocal("id", "name", "description", "photo"),
+    NasaLocal("id", "name", "description", "photo")
+)
+fun getListRemote() = listOf(
+    NasaDto("id", "name", "description", "photo"),
+    NasaDto("id", "name", "description", "photo")
 )
