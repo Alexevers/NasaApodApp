@@ -145,7 +145,7 @@ class FlowExamples {
     }
 
     suspend fun exercise3() {
-        val heroList = listOf(
+        val NasaList = listOf(
             "Maestro Roshi",
             "Mr. Satán",
             "Krilin",
@@ -166,7 +166,7 @@ class FlowExamples {
             "Broly"
         )
         val result =
-            heroList
+            NasaList
                 .asFlow()
                 .filter { it.length % 2 == 1 }
                 .take(2)
@@ -186,7 +186,7 @@ class FlowExamples {
     }
 
     suspend fun exercise3Reduce() {
-        val heroList = listOf(
+        val NasaList = listOf(
             "Maestro Roshi",
             "Mr. Satán",
             "Krilin",
@@ -207,7 +207,7 @@ class FlowExamples {
             "Broly"
         )
         val result =
-            heroList
+            NasaList
                 .asFlow()
                 .filter { it.length % 2 == 1 }
                 .take(2)

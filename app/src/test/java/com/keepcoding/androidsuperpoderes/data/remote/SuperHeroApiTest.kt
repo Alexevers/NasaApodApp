@@ -25,7 +25,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @ExperimentalCoroutinesApi
-class SuperHeroApiTest {
+class SuperNasaApiTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
@@ -33,37 +33,37 @@ class SuperHeroApiTest {
     val mainDispatcherRule = DefaultDispatcherRule()
 
 
-    private lateinit var api: SuperHeroApi
+    private lateinit var api: SuperNasaApi
 
     @Before
     fun setup() {
-        api = retrofit.create(SuperHeroApi::class.java)
+        api = retrofit.create(SuperNasaApi::class.java)
     }
 
     @Test
-    fun `WHEN request hero list EXPECT result`() = runTest {
-        val result = api.getHeroList(SearchDto())
+    fun `WHEN request Nasa list EXPECT result`() = runTest {
+        val result = api.getNasaList(SearchDto())
 
         assertThat(result.isNotEmpty(), `is`(true))
     }
 
     @Test
     fun `WHEN request whit search EXPECT item`() = runTest {
-        val result = api.getHeroList(SearchDto("Goku"))
+        val result = api.getNasaList(SearchDto("Goku"))
 
         assertThat(result.size, `is`(1))
     }
 
     @Test
     fun `WHEN request whit random text EXPECT empty list`() = runTest {
-        val result = api.getHeroList(SearchDto("asdf asdf"))
+        val result = api.getNasaList(SearchDto("asdf asdf"))
 
         assertThat(result.isEmpty(), `is`(true))
     }
 
     @Test
-    fun `WHEN request hero location list EXPECT location list`() = runTest {
-        val result = api.getHeroLocationList(
+    fun `WHEN request Nasa location list EXPECT location list`() = runTest {
+        val result = api.getNasaLocationList(
             IdDto(
                 "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3"
             )
@@ -73,8 +73,8 @@ class SuperHeroApiTest {
     }
 
     @Test
-    fun `WHEN request hero location list EXPECT empty list`() = runTest {
-        val result = api.getHeroLocationList(
+    fun `WHEN request Nasa location list EXPECT empty list`() = runTest {
+        val result = api.getNasaLocationList(
             IdDto(
                 "81D51BD2-E82C-4E1D-8216-BDFB107C1F28"
             )
@@ -85,7 +85,7 @@ class SuperHeroApiTest {
 
     @Test(expected = HttpException::class)
     fun `WHEN request unkown location EXPECT throws exception`() = runTest {
-        api.getHeroLocationList(
+        api.getNasaLocationList(
             IdDto(
                 "81D51BD2-E82asdfaC-4E1D-8216-BDFB107C1F28"
             )

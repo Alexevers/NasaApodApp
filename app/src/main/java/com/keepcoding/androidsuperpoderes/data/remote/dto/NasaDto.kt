@@ -2,7 +2,7 @@ package com.keepcoding.androidsuperpoderes.data.remote.dto
 
 import com.squareup.moshi.Json
 
-data class HeroDto(
+data class NasaDto(
     @Json(name = "title") val id: String?,
     @Json(name = "date") val date: String?,
     @Json(name = "explanation") val description: String?,

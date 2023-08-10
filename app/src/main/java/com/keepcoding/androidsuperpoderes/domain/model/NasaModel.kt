@@ -1,6 +1,6 @@
 package com.keepcoding.androidsuperpoderes.domain.model
 
-data class HeroModel(
+data class NasaModel(
     val id: String,
     val date: String,
     val description: String,
@@ -10,7 +10,7 @@ data class HeroModel(
 // POJO
 /*
 
-public class HeroModel {
+public class NasaModel {
     private String name;
     private String _name;
 

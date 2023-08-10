@@ -1,14 +1,14 @@
 package com.keepcoding.androidsuperpoderes.data.local
 
-import com.keepcoding.androidsuperpoderes.data.local.model.HeroLocal
+import com.keepcoding.androidsuperpoderes.data.local.model.NasaLocal
 
 class LocalDataSourceImpl(
-    private val heroDao: HeroDao
+    private val NasaDao: NasaDao
 ) : LocalDataSource {
 
-    override suspend fun insertHeroList(heroList: List<HeroLocal>) = heroDao.insertAll(heroList)
+    override suspend fun insertNasaList(NasaList: List<NasaLocal>) = NasaDao.insertAll(NasaList)
 
-    override suspend fun getHeroList() : List<HeroLocal> = heroDao.getAll()
+    override suspend fun getNasaList() : List<NasaLocal> = NasaDao.getAll()
 
-    override suspend fun getHeroById(id: String): HeroLocal = heroDao.getHeroById(id)
+    override suspend fun getNasaById(id: String): NasaLocal = NasaDao.getNasaById(id)
 }

@@ -7,7 +7,7 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-class GetDistanceFromHeroUseCase {
+class GetDistanceFromNasaUseCase {
 
     private val EARTH_RADIUS: Int = 6371
 

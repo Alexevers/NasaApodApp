@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "SuperHeroTable")
-data class HeroLocal(
+@Entity(tableName = "SuperNasaTable")
+data class NasaLocal(
     @PrimaryKey @ColumnInfo(name = "title") val id: String,
     @ColumnInfo(name = "date") val date: String,
     @ColumnInfo(name = "explanation") val description: String,

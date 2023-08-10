@@ -1,9 +1,9 @@
 package com.keepcoding.androidsuperpoderes.data.local
 
-import com.keepcoding.androidsuperpoderes.data.local.model.HeroLocal
+import com.keepcoding.androidsuperpoderes.data.local.model.NasaLocal
 
 interface LocalDataSource {
-    suspend fun insertHeroList(heroList: List<HeroLocal>)
-    suspend fun getHeroList() : List<HeroLocal>
-    suspend fun getHeroById(id: String) : HeroLocal
+    suspend fun insertNasaList(NasaList: List<NasaLocal>)
+    suspend fun getNasaList() : List<NasaLocal>
+    suspend fun getNasaById(id: String) : NasaLocal
 }

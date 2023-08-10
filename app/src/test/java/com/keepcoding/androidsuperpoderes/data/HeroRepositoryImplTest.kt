@@ -2,9 +2,9 @@ package com.keepcoding.androidsuperpoderes.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.keepcoding.androidsuperpoderes.data.local.LocalDataSource
-import com.keepcoding.androidsuperpoderes.data.local.model.HeroLocal
+import com.keepcoding.androidsuperpoderes.data.local.model.NasaLocal
 import com.keepcoding.androidsuperpoderes.data.remote.RemoteDataSource
-import com.keepcoding.androidsuperpoderes.data.remote.dto.HeroDto
+import com.keepcoding.androidsuperpoderes.data.remote.dto.NasaDto
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -17,7 +17,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class HeroRepositoryImplTest {
+class NasaRepositoryImplTest {
     @get:Rule
     val instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
     @get:Rule
@@ -36,16 +36,16 @@ class HeroRepositoryImplTest {
     }
 
     @Test
-    fun `WHEN getHeroList EXPECT local data`() = runTest {
-        coEvery { localDataSource.getHeroList() } returns getListLocal()
-        coEvery { remoteDataSource.getHeroList() } returns listOf<HeroDto>()
+    fun `WHEN getNasaList EXPECT local data`() = runTest {
+        coEvery { localDataSource.getNasaList() } returns getListLocal()
+        coEvery { remoteDataSource.getNasaList() } returns listOf<NasaDto>()
 
-        val repo = HeroRepositoryImpl(
+        val repo = NasaRepositoryImpl(
             localDataSource = localDataSource,
             remoteDataSource = remoteDataSource
         )
 
-        val res = repo.getHeroList()
+        val res = repo.getNasaList()
 
 
         assertThat(res, instanceOf(List::class.java))
@@ -53,16 +53,16 @@ class HeroRepositoryImplTest {
     }
 
     @Test
-    fun `WHEN getHeroList EXPECT remote data`() = runTest {
-        coEvery { localDataSource.getHeroList() } returns listOf<HeroLocal>()
-        coEvery { remoteDataSource.getHeroList() } returns getListRemote()
+    fun `WHEN getNasaList EXPECT remote data`() = runTest {
+        coEvery { localDataSource.getNasaList() } returns listOf<NasaLocal>()
+        coEvery { remoteDataSource.getNasaList() } returns getListRemote()
 
-        val repo = HeroRepositoryImpl(
+        val repo = NasaRepositoryImpl(
             localDataSource = localDataSource,
             remoteDataSource = remoteDataSource
         )
 
-        val res = repo.getHeroList()
+        val res = repo.getNasaList()
 
         assertThat(res, instanceOf(List::class.java))
         assertThat(res.size, `is`(2))
@@ -70,11 +70,11 @@ class HeroRepositoryImplTest {
 }
 
 fun getListLocal() = listOf(
-        HeroLocal("id", "name", "https://photo-url", true),
-        HeroLocal("id", "name", "https://photo-url", true)
+        NasaLocal("id", "name", "https://photo-url", true),
+        NasaLocal("id", "name", "https://photo-url", true)
     )
 
-fun getListRemote() = listOf<HeroDto>(
-    HeroDto("id", "name", "url", "https://photo-url", true),
-    HeroDto("id", "name", "url", "https://photo-url", true)
+fun getListRemote() = listOf<NasaDto>(
+    NasaDto("id", "name", "url", "https://photo-url", true),
+    NasaDto("id", "name", "url", "https://photo-url", true)
 )

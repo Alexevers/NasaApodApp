@@ -1,7 +1,7 @@
 package com.keepcoding.androidsuperpoderes.presentation.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.keepcoding.androidsuperpoderes.HeroTestDataBuilder
+import com.keepcoding.androidsuperpoderes.NasaTestDataBuilder
 import com.keepcoding.androidsuperpoderes.domain.usecase.GetDetailUseCase
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.keepcoding.androidsuperpoderes.testutil.getOrAwaitValue
@@ -32,13 +32,13 @@ class DetailViewModelTest {
     @Test
     fun `WHEN detail viewModel getData EXPECT returns data`() = runTest {
         coEvery { getDetailUseCase.invoke("test-id") } returns
-                HeroTestDataBuilder().buildSingle()
+                NasaTestDataBuilder().buildSingle()
 
         val viewModel = DetailViewModel(getDetailUseCase)
 
-        viewModel.getHero("test-id")
+        viewModel.getNasa("test-id")
 
-        val res = viewModel.hero.getOrAwaitValue()
+        val res = viewModel.nasa.getOrAwaitValue()
 
         assertThat(res.id, `is`("test-id"))
     }

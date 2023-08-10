@@ -4,18 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keepcoding.androidsuperpoderes.domain.model.HeroModel
-import com.keepcoding.androidsuperpoderes.domain.usecase.GetHeroListUseCase
+import com.keepcoding.androidsuperpoderes.domain.model.NasaModel
+import com.keepcoding.androidsuperpoderes.domain.usecase.GetNasaListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HeroListViewModel(
-    private val getHeroListUseCase: GetHeroListUseCase
+class NasaListViewModel(
+    private val getNasaListUseCase: GetNasaListUseCase
 ) : ViewModel() {
 
-    private val _heroList = MutableLiveData<List<HeroModel>>()
-    val heroList: LiveData<List<HeroModel>> get() = _heroList
+    private val _nasaList = MutableLiveData<List<NasaModel>>()
+    val nasaList: LiveData<List<NasaModel>> get() = _nasaList
 
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> get() = _errorMessage
@@ -32,9 +32,9 @@ class HeroListViewModel(
             try {
                 _errorMessage.value = null
                 val result = withContext(Dispatchers.IO) {
-                    getHeroListUseCase.invoke()
+                    getNasaListUseCase.invoke()
                 }
-                _heroList.value = result
+                _nasaList.value = result
             } catch (t: Throwable) {
                 _errorMessage.value = "Error"
             }

@@ -18,15 +18,15 @@ sealed class Screen(
         arguments = emptyList()
     )
 
-    object HeroListScreen : Screen(
-        route = "heroList",
+    object NasaListScreen : Screen(
+        route = "NasaList",
         arguments = emptyList()
     )
 
-    object HeroDetailScreen : Screen(
-        route = "heroDetail",
+    object NasaDetailScreen : Screen(
+        route = "NasaDetail",
         arguments = listOf(
-            navArgument("heroId") {
+            navArgument("NasaId") {
                 type = NavType.StringType
                 nullable = false
             }

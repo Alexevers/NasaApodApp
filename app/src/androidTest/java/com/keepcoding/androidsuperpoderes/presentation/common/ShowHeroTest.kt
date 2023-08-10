@@ -6,23 +6,23 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.printToLog
-import com.keepcoding.androidsuperpoderes.HeroTestDataBuilder
-import com.keepcoding.androidsuperpoderes.presentation.detail.ShowHero
+import com.keepcoding.androidsuperpoderes.NasaTestDataBuilder
+import com.keepcoding.androidsuperpoderes.presentation.detail.NasaDetail
 import org.junit.Rule
 import org.junit.Test
 
-class ShowHeroTest {
+class ShowNasaTest {
     @get:Rule
     val rule = createComposeRule()
 
     @Test
-    fun testShowHero() {
+    fun testShowNasa() {
         rule.setContent {
-            ShowHero(
-                HeroTestDataBuilder()
+            NasaDetail(
+                NasaTestDataBuilder()
                     .withName("Sample")
                     .buildSingle()
-            ) {}
+            )
         }
 
         rule.onRoot().printToLog("MY TAG")

@@ -2,15 +2,15 @@ package com.keepcoding.androidsuperpoderes.di
 
 import android.content.Context
 import androidx.room.Room
-import com.keepcoding.androidsuperpoderes.data.HeroRepository
-import com.keepcoding.androidsuperpoderes.data.HeroRepositoryImpl
-import com.keepcoding.androidsuperpoderes.data.local.HeroDao
-import com.keepcoding.androidsuperpoderes.data.local.HeroDatabase
+import com.keepcoding.androidsuperpoderes.data.NasaRepository
+import com.keepcoding.androidsuperpoderes.data.NasaRepositoryImpl
+import com.keepcoding.androidsuperpoderes.data.local.NasaDao
+import com.keepcoding.androidsuperpoderes.data.local.NasaDatabase
 import com.keepcoding.androidsuperpoderes.data.local.LocalDataSource
 import com.keepcoding.androidsuperpoderes.data.local.LocalDataSourceImpl
 import com.keepcoding.androidsuperpoderes.data.remote.RemoteDataSource
 import com.keepcoding.androidsuperpoderes.data.remote.RemoteDataSourceImpl
-import com.keepcoding.androidsuperpoderes.data.remote.SuperHeroApi
+import com.keepcoding.androidsuperpoderes.data.remote.SuperNasaApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -45,14 +45,14 @@ val dataModule = module {
             .build()
     }
 
-    single<HeroRepository> { HeroRepositoryImpl(get(), get()) }
+    single<NasaRepository> { NasaRepositoryImpl(get(), get()) }
 
     single<RemoteDataSource> { RemoteDataSourceImpl(get()) }
 
     single<LocalDataSource> { LocalDataSourceImpl(get()) }
 
-    single<SuperHeroApi> {
-        getSuperHeroApi(get())
+    single<SuperNasaApi> {
+        getSuperNasaApi(get())
     }
 
     single {
@@ -60,19 +60,19 @@ val dataModule = module {
     }
 
     single {
-        providesHeroDao(get())
+        providesNasaDao(get())
     }
 
 }
 
-private fun getSuperHeroApi(retrofit: Retrofit) =
-    retrofit.create(SuperHeroApi::class.java)
+private fun getSuperNasaApi(retrofit: Retrofit) =
+    retrofit.create(SuperNasaApi::class.java)
 
-private fun getDatabase(context: Context) : HeroDatabase =
+private fun getDatabase(context: Context) : NasaDatabase =
     Room.databaseBuilder(
         context,
-        HeroDatabase::class.java, "superhero-db"
+        NasaDatabase::class.java, "superNasa-db"
     ).build()
 
-private fun providesHeroDao(db: HeroDatabase) : HeroDao =
-    db.superHeroDao()
+private fun providesNasaDao(db: NasaDatabase) : NasaDao =
+    db.superNasaDao()

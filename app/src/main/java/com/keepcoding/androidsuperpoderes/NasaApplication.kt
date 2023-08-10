@@ -10,7 +10,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.core.logger.Level
 
-class SuperHeroApplication : Application() {
+class NasaApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -23,7 +23,7 @@ class SuperHeroApplication : Application() {
                     Level.NONE
                 }
             )
-            androidContext(this@SuperHeroApplication)
+            androidContext(this@NasaApplication)
             modules(
                 presentationModule,
                 domainModule,

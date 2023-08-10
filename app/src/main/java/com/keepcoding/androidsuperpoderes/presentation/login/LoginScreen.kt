@@ -2,6 +2,7 @@ package com.keepcoding.androidsuperpoderes.presentation.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -32,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -66,6 +69,7 @@ fun LoginScreen(
         mutableStateOf("password")
         //mutableStateOf("")
     }
+
     val firaNasaFamily = FontFamily(
         Font(R.font.nasa, FontWeight.Light)
     )
@@ -77,7 +81,7 @@ fun LoginScreen(
     ) {
         Image(
             painter = painterResource(R.drawable.fondo_login2),
-            contentDescription = "pedri",
+            contentDescription = "Fondo con una imagen de cielo estrellado",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
@@ -95,7 +99,7 @@ fun LoginScreen(
             modifier = Modifier.size(250.dp),
             painter = painterResource(id = R.drawable.nasa_logo),
             contentScale = ContentScale.Crop,
-            contentDescription = "SuperHero Application"
+            contentDescription = "SuperNasa Application"
         )
 
         Spacer(
@@ -106,11 +110,13 @@ fun LoginScreen(
 
         TextField(
             modifier = Modifier
-                .background(color = Color(0xAEB6B7BE))
-                .testTag(LOGIN_TEXT_FIELD_USER),
+
+                //.border(1.dp, Color.Gray)
+                .testTag(LOGIN_TEXT_FIELD_USER)
+                .clip(RoundedCornerShape(10.dp))
+                .background(color = Color(0xAEB6B7BE)),
 
             value = email,
-
             placeholder = {
                   Text("Email")
             },
@@ -131,8 +137,10 @@ fun LoginScreen(
         )
         TextField(
             modifier = Modifier
+                .testTag(LOGIN_TEXT_FIELD_PASSWORD)
+                .clip(RoundedCornerShape(10.dp))
                 .background(color = Color(0xAEB6B7BE))
-                .testTag(LOGIN_TEXT_FIELD_PASSWORD),
+                ,
             value = password,
             placeholder = {
                   Text("Password")
@@ -143,7 +151,7 @@ fun LoginScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Lock,
-                    contentDescription = ""
+                    contentDescription = "Imagen de candado"
                 )
             },
 
@@ -161,7 +169,7 @@ fun LoginScreen(
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color(0xFF1E26C4),
+                backgroundColor = Color(0xED1F25A5),
                 contentColor = Color(0xFFFFFFFF)
             )
 

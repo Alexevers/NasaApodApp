@@ -1,42 +1,42 @@
 package com.keepcoding.androidsuperpoderes
 
-import com.keepcoding.androidsuperpoderes.domain.model.HeroModel
+import com.keepcoding.androidsuperpoderes.domain.model.NasaModel
 
 
-class HeroTestDataBuilder {
+class NasaTestDataBuilder {
     val id = "test-id"
     var name = ""
     var photoUrl = ""
     var description = ""
     var numElements: Int = 1
 
-    fun withName(name: String): HeroTestDataBuilder {
+    fun withName(name: String): NasaTestDataBuilder {
         this.name = name
         return this
     }
 
-    fun withPhotoUrl(photoUrl: String): HeroTestDataBuilder {
+    fun withPhotoUrl(photoUrl: String): NasaTestDataBuilder {
         this.photoUrl = photoUrl
         return this
     }
 
-    fun withDescription(description: String): HeroTestDataBuilder {
+    fun withDescription(description: String): NasaTestDataBuilder {
         this.description = description
         return this
     }
 
-    fun withNumElements(numElements: Int): HeroTestDataBuilder {
+    fun withNumElements(numElements: Int): NasaTestDataBuilder {
         this.numElements = numElements
 
         return this
     }
 
-    fun buildList(): List<HeroModel> {
-        val list = mutableListOf<HeroModel>()
+    fun buildList(): List<NasaModel> {
+        val list = mutableListOf<NasaModel>()
 
         for(i in 0 until numElements) {
             list.add(
-                HeroModel(
+                NasaModel(
                 id,
                 date = name,
                 photo = photoUrl,
@@ -48,7 +48,7 @@ class HeroTestDataBuilder {
         return list.toList()
     }
 
-    fun buildSingle() = HeroModel(
+    fun buildSingle() = NasaModel(
         id = id,
         date = name,
         photo = photoUrl,

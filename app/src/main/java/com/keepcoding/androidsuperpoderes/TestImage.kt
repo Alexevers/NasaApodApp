@@ -22,7 +22,7 @@ fun TestImage() {
             .background(Color.Red)
             .size(50.dp)
             .border(BorderStroke(2.dp, Color.Blue), shape = CircleShape),
-        painter = painterResource(id = R.drawable.ball),
+        painter = painterResource(id = R.drawable.fondo_login2),
         contentDescription = "My awesome image"
     )
 }

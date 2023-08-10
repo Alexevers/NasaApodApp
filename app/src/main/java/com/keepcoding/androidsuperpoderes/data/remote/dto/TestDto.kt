@@ -3,10 +3,10 @@ package com.keepcoding.androidsuperpoderes.data.remote.dto
 import com.squareup.moshi.Json
 
 data class TestDto(
-    @Json(name = "parentObject") val parentObject: AnotherObjectDto
+    @Json(name = "parentObject") val parentObject: AnotNasabjectDto
 )
 
-data class AnotherObjectDto(
+data class AnotNasabjectDto(
     @Json(name = "list") val list: List<String>
 )
 

@@ -4,9 +4,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.keepcoding.androidsuperpoderes.presentation.detail.HeroDetailScreen
+import com.keepcoding.androidsuperpoderes.presentation.detail.NasaDetailScreen
 import com.keepcoding.androidsuperpoderes.presentation.forgot.ForgotPasswordScreen
-import com.keepcoding.androidsuperpoderes.presentation.list.HeroListScreen
+import com.keepcoding.androidsuperpoderes.presentation.list.NasaListScreen
 import com.keepcoding.androidsuperpoderes.presentation.login.LoginScreen
 
 fun NavGraphBuilder.addLoginScreen(navController: NavController) {
@@ -16,7 +16,7 @@ fun NavGraphBuilder.addLoginScreen(navController: NavController) {
                 navController.navigate(Screen.ForgotPasswordScreen.route)
             },
             onLoginSuccess = {
-                navController.navigate(Screen.HeroListScreen.route)
+                navController.navigate(Screen.NasaListScreen.route)
             }
         )
     }
@@ -28,21 +28,21 @@ fun NavGraphBuilder.addForgotPasswordScreen() {
     }
 }
 
-fun NavGraphBuilder.addHeroListScreen(navController: NavHostController) {
-    composable(Screen.HeroListScreen.route) {
-        HeroListScreen { heroId ->
-            navController.navigate("${Screen.HeroDetailScreen.route}/$heroId")
+fun NavGraphBuilder.addNasaListScreen(navController: NavHostController) {
+    composable(Screen.NasaListScreen.route) {
+        NasaListScreen { NasaId ->
+            navController.navigate("${Screen.NasaDetailScreen.route}/$NasaId")
         }
     }
 }
 
-fun NavGraphBuilder.addHeroDetailScreen(navController: NavHostController) {
+fun NavGraphBuilder.addNasaDetailScreen(navController: NavHostController) {
     composable(
-        route = Screen.HeroDetailScreen.route + "/{heroId}",
-        arguments = Screen.HeroDetailScreen.arguments
+        route = Screen.NasaDetailScreen.route + "/{NasaId}",
+        arguments = Screen.NasaDetailScreen.arguments
     ) { navBackStackEntry ->
-        val id = navBackStackEntry.arguments?.getString("heroId") ?: ""
-        HeroDetailScreen(id = id) {
+        val id = navBackStackEntry.arguments?.getString("NasaId") ?: ""
+        NasaDetailScreen(id = id) {
             navController.popBackStack()
         }
     }
