@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.keepcoding.androidsuperpoderes'
+    namespace 'com.alejandro.nasaproject'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.keepcoding.androidsuperpoderes"
+        applicationId "com.alejandro.nasaproject"
         minSdk 24
         targetSdk 33
         versionCode 1
