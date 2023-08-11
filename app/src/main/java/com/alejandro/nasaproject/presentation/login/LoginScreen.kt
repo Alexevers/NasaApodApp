@@ -50,11 +50,11 @@ fun LoginScreen(
 
     var email by remember {
         // mutableStateOf("")
-        mutableStateOf("alextfos@alejandro.io")
+        mutableStateOf("apruebamePorfa@gmail.com")
     }
 
     var password by remember {
-        mutableStateOf("password")
+        mutableStateOf("alejandro1234")
         //mutableStateOf("")
     }
 
@@ -191,7 +191,7 @@ fun LoginScreen(
 }
 
 fun authenticate(user: String, password: String) =
-    user == "alextfos@alejandro.io" && password == "password"
+    user == "apruebamePorfa@gmail.com" && password == "alejandro1234"
 
 
 @Preview
