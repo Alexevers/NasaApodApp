@@ -45,17 +45,15 @@ const val LOGIN_TEXT_FIELD_PASSWORD = "LOGIN_TEXT_FIELD_PASSWORD"
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
     // Prueba de paso de parámetros
-    onForgotClicked: (Int) -> Unit
+
 ) {
 
     var email by remember {
-        // mutableStateOf("")
         mutableStateOf("apruebamePorfa@gmail.com")
     }
 
     var password by remember {
         mutableStateOf("alejandro1234")
-        //mutableStateOf("")
     }
 
     val firaNasaFamily = FontFamily(
@@ -78,8 +76,7 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Transparent)
-            ,
+            .background(Color.Transparent),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -98,19 +95,22 @@ fun LoginScreen(
 
         TextField(
             modifier = Modifier
-
-                //.border(1.dp, Color.Gray)
                 .testTag(LOGIN_TEXT_FIELD_USER)
                 .clip(RoundedCornerShape(10.dp))
                 .background(color = Color(0xAEB6B7BE)),
 
             value = email,
+
             placeholder = {
-                  Text("Email")
+                Text("Email")
             },
+
             onValueChange = { newValue ->
                 email = newValue
-            },label = { Text("Email")},
+            },
+
+            label = { Text("Email") },
+
             leadingIcon = {
                 Image(
                     imageVector = Icons.Default.Email,
@@ -118,24 +118,30 @@ fun LoginScreen(
                 )
             }
         )
+
+
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(10.dp)
         )
+
+
         TextField(
             modifier = Modifier
                 .testTag(LOGIN_TEXT_FIELD_PASSWORD)
                 .clip(RoundedCornerShape(10.dp))
-                .background(color = Color(0xAEB6B7BE))
-                ,
+                .background(color = Color(0xAEB6B7BE)),
             value = password,
             placeholder = {
-                  Text("Password")
+                Text("Password")
             },
             onValueChange = {
                 password = it
-            },label = { Text("Password")},
+            },
+
+            label = { Text("Password") },
+
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Lock,
@@ -143,12 +149,14 @@ fun LoginScreen(
                 )
             },
 
-        )
+            )
+
 
         Spacer(
             modifier = Modifier
                 .size(20.dp)
         )
+
 
         Button(
             onClick = {
@@ -169,24 +177,14 @@ fun LoginScreen(
                 tint = Color(0xFFC41E2C)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text(text = "Iniciar Sesión", fontFamily = firaNasaFamily
+            Text(
+                text = "Iniciar Sesión", fontFamily = firaNasaFamily
             )
         }
         Spacer(
             modifier = Modifier
                 .size(20.dp)
         )
-
-
-
-        /*
-        onClick = {
-        onLoginSuccess.invoke()
-        onLoginSuccess()
-        }
-        */
-
-
     }
 }
 
@@ -198,11 +196,7 @@ fun authenticate(user: String, password: String) =
 @Composable
 fun LoginScreenPreview() {
     LoginScreen(
-        onLoginSuccess = {
+        onLoginSuccess = {}
 
-        },
-        onForgotClicked = { test ->
-
-        }
     )
 }

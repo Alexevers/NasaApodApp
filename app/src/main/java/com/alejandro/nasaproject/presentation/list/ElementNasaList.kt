@@ -37,7 +37,7 @@ import com.alejandro.nasaproject.presentation.theme.globalRoundedCornerShape
 // Ejercicio en mostrar un diseño de un Nasa
 // Mostrar la imagen con coil
 @Composable
-fun ShowNasaList(
+fun ElementNasaList(
     nasa: NasaModel,
     onClick: () -> Unit
 ) {
@@ -105,13 +105,12 @@ fun ShowNasaList(
 @Composable
 @Preview
 fun ShowNasaPreview() {
-    ShowNasaList(
+    ElementNasaList(
         NasaTestDataBuilder()
-            .withName("Sample name long text long text long text long textlong text long text long text")
+            .withName("Este es un texto de prueba para ver si se muestra de manera correcta")
             .withDescription("")
-
             .buildSingle()
     ) {
-        // Nothing todo here
+
     }
 }

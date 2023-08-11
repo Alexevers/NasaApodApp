@@ -30,7 +30,7 @@ fun NasaListScreen(
 
     if (errorState.value?.isNotEmpty() == true) {
         val error = errorState.value
-        ShowError(error = error ?: "")
+        ShowError(error = error ?: "No funciona")
     }
 
     Box(
@@ -64,7 +64,7 @@ fun NasaListScreen(
             // Unwrap
             val item = nasaList?.get(i)
             item?.let { nasa ->
-                ShowNasaList(nasa) {
+                ElementNasaList(nasa) {
                     onItemClick.invoke(nasa.id)
                 }
             }

@@ -65,7 +65,7 @@ fun NasaDetailScreen(
 
     if (estado_para_error.value?.isNotEmpty() == true) {
         val error = estado_para_error.value
-        ShowError(error = error ?: "")
+        ShowError(error = error ?: "No funciona")
     }
 
     val result = estado_para_nasa.value
