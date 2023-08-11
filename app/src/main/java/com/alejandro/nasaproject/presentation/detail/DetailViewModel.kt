@@ -10,6 +10,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/*
+* Clase ViewModel correspondiente a la pantalla de detalle de los elementos de la lista de elementos
+* */
 class DetailViewModel(
     private val getDetailUseCase: GetDetailUseCase
 ) : ViewModel() {
@@ -28,7 +31,7 @@ class DetailViewModel(
             }
             _nasa.value = result
         } catch (_: Throwable) {
-            _errorMessage.value = "Error lunched from ViewModel"
+            _errorMessage.value = "Error del DetailViewModel"
         }
     }
 }

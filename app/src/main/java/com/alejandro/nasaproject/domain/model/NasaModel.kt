@@ -1,5 +1,8 @@
 package com.alejandro.nasaproject.domain.model
 
+/*Data class con los atributos que tendrá el modelo de datos en la aplicación
+* se recogeran los datos desde la API a estos atributos
+* */
 data class NasaModel(
     val id: String,
     val date: String,
@@ -7,20 +10,3 @@ data class NasaModel(
     val photo: String
 )
 
-// POJO
-/*
-
-public class NasaModel {
-    private String name;
-    private String _name;
-
-    public String getName() {
-        return this._name;
-    }
-
-    public String setName(String name) {
-        this.name = name;
-    }
-}
-
-*/

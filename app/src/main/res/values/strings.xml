@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">AndroidSuperpoderes</string>
+    <string name="app_name">nasaproject</string>
     <string name="login">Login</string>
+    <string name="nasa_descripcion">App APOD NASA</string>
+    <string name="pantalla_de_inicio">APOD NASA</string>
+    <string name="btn_go_to_app">Entrar\n</string>
 </resources>

@@ -42,6 +42,15 @@ import com.alejandro.nasaproject.R
 import com.alejandro.nasaproject.components.ShowError
 import org.koin.androidx.compose.koinViewModel
 
+
+/*
+ * Pantalla de detalle para los elementos de la lista
+ * Está hecha con Jetpack Compose y consta de un topbar,
+ * un contenedor donde se muestra la imagen que se recoge de la API,
+ * y un textfield donde se muestran los datos correspondientes a la imagen.
+ *
+ */
+
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NasaDetailScreen(
@@ -49,46 +58,48 @@ fun NasaDetailScreen(
     NasaDetailViewModel: DetailViewModel = koinViewModel(),
     onBack: () -> Unit
 ) {
-    val nasaState = NasaDetailViewModel.nasa.observeAsState()
-    val errorState = NasaDetailViewModel.errorMessage.observeAsState()
+    val estado_para_nasa = NasaDetailViewModel.nasa.observeAsState() // este observeAsState correspondel elemento nasa livedata del nasaDetailViewModel
+    val estado_para_error = NasaDetailViewModel.errorMessage.observeAsState() // este observeAsState correspondel elemento error livedata del nasaDetailViewModel
 
     NasaDetailViewModel.getNasa(id)
 
-    if (errorState.value?.isNotEmpty() == true) {
-        val error = errorState.value
+    if (estado_para_error.value?.isNotEmpty() == true) {
+        val error = estado_para_error.value
         ShowError(error = error ?: "")
     }
 
-    val result = nasaState.value
+    val result = estado_para_nasa.value
 
+    //se carga la tipografia de la NASA
     val firaNasaFamily = FontFamily(
         Font(R.font.nasa, FontWeight.Light)
     )
 
-    // Side Effects
-    // Mutabilidad
+
     result?.let { nasa ->
         Scaffold(
             topBar = {
-
+                //elemento topbar donde se situa el icono para volver a la lista desde la pantalla de detalle
                 TopAppBar(
                     backgroundColor = Color(0xED1F25A5),
                     title = {
-                        Text("Detail Screen", color = Color.White,fontFamily = firaNasaFamily)
+                        Text("Vista detalle", color = Color.White,fontFamily = firaNasaFamily)
                     },
                     navigationIcon = {
-                        IconButton(
+                        IconButton( //se define un botón de tipo icon para implementar la posibilidad de volver hacia atrás
                             modifier = Modifier.semantics {
                                   contentDescription = "Botón para ir al listado de imágenes"
                             },
                             onClick = onBack
                         ) {
-                            Icon(Icons.Filled.ArrowBack, null, tint = Color.White)
+                            Icon(Icons.Filled.ArrowBack, null, tint = Color.White) //icono de la flecha para volver atrás
                         }
                     }
                 )
             }
         ) {
+
+            //contenedor para la imagen
             Box(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -126,19 +137,12 @@ fun NasaDetailScreen(
                         .height(10.dp)
                 )
 
-
+                //textfield que va a contener la información
                 TextField(
                     modifier = Modifier
                         .clip(RoundedCornerShape(30.dp))
-                        .background(color = Color(0xD5EDEDEE))
-
-
-                        ,
-textStyle = androidx.compose.ui.text.TextStyle(
-//fontFamily = firaNasaFamily
-),
+                        .background(color = Color(0xD5EDEDEE)),
                     value = nasa.date+"\n\n"+nasa.id+"\n\n"+nasa.description,
-
                     placeholder = {
                         Text("Email")
                     }, readOnly = true,
@@ -146,25 +150,10 @@ textStyle = androidx.compose.ui.text.TextStyle(
 
                 )
             }
-
-
-
-
-
-
-            //NasaDetail(nasa = nasa)
         }
     } ?: run {
         ShowError("Unknown error")
     }
-
-    /*
-    if (result != null) {
-
-    } else {
-
-    }
-    */
 
 }
 
@@ -174,15 +163,4 @@ fun NasaDetailScreenPreview() {
     NasaDetailScreen(id = "") {
 
     }
-}
-
-/**
- * Paradigma funcional vs Paradigma Orientaión a Objetos
- * Para cada conjunto de valores de entrada siempre voy a tener la misma salida
- */
-fun test(
-
-    param1: String,
-) {
-
 }

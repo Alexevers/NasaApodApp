@@ -34,14 +34,14 @@ class NasaTestDataBuilder {
     fun buildList(): List<NasaModel> {
         val list = mutableListOf<NasaModel>()
 
-        for(i in 0 until numElements) {
+        for (i in 0 until numElements) {
             list.add(
                 NasaModel(
-                id,
-                date = name,
-                photo = photoUrl,
-                description = description
-            )
+                    id,
+                    date = name,
+                    photo = photoUrl,
+                    description = description
+                )
             )
         }
 
